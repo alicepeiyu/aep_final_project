@@ -19,7 +19,7 @@
 
   <target name="compile" depends="init">
     <javac destdir="target/classes" target="1.8" source="1.8" debug="true">
-      <src path="src/main" />
+      <src path="db61b" />
     </javac>
   </target>
 
