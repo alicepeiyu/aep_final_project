@@ -1,11 +1,15 @@
 package db61b;
 
+//import org.junit.Assert;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertEquals;
 
 /** The JUnit tests for the database class.
  *  @author Alice
@@ -19,15 +23,15 @@ public class DataBaseTest {
         Table testTable = new Table(columnTitles);
         HashMap<String, Table> dataBase = new HashMap<String, Table>();
         dataBase.put("test", testTable);
-        assertEquals(testTable, dataBase.get("test"));
+        Assert.assertEquals(testTable, dataBase.get("test"));
 
         String[] columnTitles1 = new String[]{"ID", "Name"};
         Table testTable1 = new Table(columnTitles1);
         try {
             dataBase.put("", testTable1);
-            Assert.assertTrue(false);
+            assertTrue(false);
         } catch (DBException excp) {
-            Assert.assertTrue(true);
+            assertTrue(true);
         }
     }
 
