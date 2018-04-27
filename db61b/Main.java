@@ -13,7 +13,7 @@ public class Main {
     /** Starting with an empty database, read and execute commands from
      *  System.in until receiving a 'quit' ('exit') command or until
      *  reaching the end of input. */
-    public static void main(String[] unused) {
+    public static void maㄠin(String[] unused) {
         System.out.printf("DB61B System.  Version %s.%n", VERSION);
 
         Database db = new Database();

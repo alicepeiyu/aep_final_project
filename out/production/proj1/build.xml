@@ -1,0 +1,44 @@
+<project name="pro1Test" basedir="." default="test">
+
+  <path id="test.classpath">
+    <pathelement path="target/classes"/>
+    <pathelement path="target/test-classes"/>
+    <pathelement path="lib/junit-4.12.jar"/>
+    <pathelement path="hamcrest-core-1.3.jar"/>
+  </path>
+
+  <target name="init">
+    <mkdir dir="target/classes"/>
+    <mkdir dir="target/test-classes"/>
+    <mkdir dir="target/reports"/>
+  </target>
+
+  <target name="clean">
+    <delete dir="target" includeemptydirs="true"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <javac destdir="target/classes" target="1.8" source="1.8" debug="true">
+      <src path="db61b" />
+    </javac>
+  </target>
+
+  <target name="compile-tests" depends="compile, init">
+    <javac destdir="target/test-classes" target="1.8" source="1.8">
+      <classpath refid="test.classpath"/>
+      <src path="src/test" />
+    </javac>
+  </target>
+
+  <target name="test" depends="compile, compile-tests">
+    <junit failureproperty="test.failure" printsummary="yes">
+      <classpath refid="test.classpath"/>
+      <batchtest todir="target/reports">
+        <fileset dir="target/test-classes" includes="**/*Test.class" />
+        <formatter type="plain"/>
+      </batchtest>
+    </junit>
+    <fail message="Test failure detected, check test results." if="test.failure" />
+  </target>
+
+</project>
